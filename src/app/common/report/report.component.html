@@ -1,0 +1,27 @@
+<app-side-nav></app-side-nav>
+<mat-card class="col-lg-5 d-flex justify-content-center mx-auto mt-5" *ngIf="isLoading">
+  <mat-spinner ></mat-spinner>
+</mat-card>
+<div class="layout " *ngIf="!isLoading">
+  <div class="py-5 mx-5 d-flex" *ngIf="displayUsers">
+    <div class="col-10 mx-auto">
+      <ng-container *ngFor="let user of displayUsers">
+        <mat-card class="my-1">
+            <div class="col-12 d-flex justify-content-between">
+              <h2>{{user?.name | uppercase}}</h2>
+              <div class="example-button-container">
+                <button mat-mini-fab color="warn" (click)="deleteUser(user?._id)" aria-label="Example icon button with a filter list icon">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+              <!-- <h4>{{userDetails?.name}}</h4> -->
+            </div>
+        </mat-card>
+      </ng-container>
+    </div>
+  </div>
+  <mat-card class="col-lg-5 d-flex justify-content-center mx-auto mt-5 text-danger" *ngIf="!displayUsers || !displayUsers.length">
+    <h3 *ngIf="userDetails?.designation === 'manager'">No staff available</h3>
+    <h3 *ngIf="userDetails?.designation === 'admin'">No users available</h3>
+  </mat-card>
+</div>

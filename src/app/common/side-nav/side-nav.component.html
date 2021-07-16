@@ -1,0 +1,12 @@
+<div class="sidenav">
+  <nav class="mt-3">
+    <ul>
+      <li routerLinkActive="myActiveCL" routerLink="/dashboard" class="cursor-p">
+        Dashboard
+      </li>
+      <li routerLinkActive="myActiveCL" routerLink="/report" class="cursor-p" *ngIf="userDetails?.designation !== 'staff'">
+        Report
+      </li>
+    </ul>
+  </nav>
+</div>

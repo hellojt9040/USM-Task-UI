@@ -1,0 +1,21 @@
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 800;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  transition: 0.5s;
+  margin-top: 64px;
+  color: #fff;
+  background-color: #646fbb;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.myActiveCL{
+  color: coral;
+}

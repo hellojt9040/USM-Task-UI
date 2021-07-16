@@ -1,0 +1,11 @@
+.layout{
+  margin-left: 201px;
+}
+.mat-card{
+  background-color: #4b64f3c4 !important;
+  height: 13rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

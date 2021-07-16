@@ -1,0 +1,22 @@
+<mat-toolbar color = "primary" class="justify-content-between mat-elevation-z6 appl-header">
+  <div >
+    <span class="mx-2 pointer" >
+      <a mat-button routerLink="/" >USM Tech</a>
+    </span>
+  </div>
+
+  <div>
+    <span *ngIf="!userIsAuthenticated" class="mx-2 pointer">
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent">LOGIN</a>
+    </span>
+    <span *ngIf="!userIsAuthenticated" class="mx-2 pointer">
+      <a mat-button routerLink="/signup" routerLinkActive="mat-accent">SIGNUP</a>
+    </span>
+    <span *ngIf="userIsAuthenticated" class="mx-2 pointer">
+      <button mat-button (click)="onLogout()">
+        LOGOUT
+      </button>
+    </span>
+  </div>
+
+</mat-toolbar>

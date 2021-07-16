@@ -1,0 +1,11 @@
+.pointer{
+  cursor: pointer;
+}
+
+.appl-header{
+  z-index: 900;
+}
+
+span {
+  outline: none;
+}

@@ -1,0 +1,84 @@
+<mat-card class="col-lg-5 d-flex justify-content-center mx-auto mt-5">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="signupForm" enctype="multipart/form-data" *ngIf="!isLoading" (ngSubmit)="onSignup(signupForm)"
+    class="col-12 ">
+    <div class="d-flex justify-content-center flex-column mb-5">
+      <div class="d-flex justify-content-center mb-4">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" class="mr-5">account_circle</mat-icon>
+      </div>
+      <div class="d-flex justify-content-center mr-3">
+        <span><strong>New User</strong></span>
+      </div>
+    </div>
+    <mat-form-field class="col-12 mb-2">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="userName" placeholder="Ex. FfUuNn_03" type="text">
+      <mat-error *ngIf="f.userName.touched && f.userName.invalid || submitted && f.userName.invalid">
+        <div *ngIf="f.userName.errors.required">Name is mandatory</div>
+        <div *ngIf="!f.userName.errors.required && f.userName.errors.alphaSpacesBetween">Name allows alphabets and
+          single spaces between the words</div>
+        <div
+          *ngIf="!f.userName.errors.required && !f.userName.errors.alphaSpacesBetween && f.userName.errors.minlength">
+          Name should have minimum of {{f.userName.errors.minlength.requiredLength}} characters
+        </div>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="col-12 mb-2">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" placeholder="Ex. example@abc.com">
+      <mat-error *ngIf="f.email.touched && f.email.invalid || submitted && f.email.invalid">
+        <div *ngIf="f.email.errors.required">Email is mandatory</div>
+        <div *ngIf="!f.email.errors.required && f.email.errors.email"> Please enter valid Email</div>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="col-12 mb-2">
+      <mat-label>Mobile</mat-label>
+      <input matInput formControlName="mobile" placeholder="Ex. 9876543210" type="text" maxlength="10">
+      <mat-error *ngIf="f.mobile.touched && f.mobile.invalid || submitted && f.mobile.invalid">
+        <div *ngIf="f.mobile.errors.required">Mobile is mandatory</div>
+        <div *ngIf="!f.mobile.errors.required">
+          <div *ngIf="f.mobile.errors.onlynumeric">Mobile allows numbers only
+          </div>
+          <div *ngIf="!f.mobile.errors.onlynumeric && f.mobile.errors.minlength">Mobile should be
+            {{f.mobile.errors.minlength.requiredLength}} digits long</div>
+        </div>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-button-toggle-group formControlName="gender" class="mb-2">
+      <mat-button-toggle value="male" aria-label="Text align justify">
+        <mat-icon>male</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="female" aria-label="Text align justify">
+        <mat-icon>female</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+    <mat-error *ngIf="f.gender.touched && f.gender.invalid || submitted && f.gender.invalid" class="small">
+      <div *ngIf="f.gender.errors.required">Please select your gender</div>
+    </mat-error>
+    <br>
+    <mat-button-toggle-group formControlName="designation" aria-label="Font Style" class="mb-2">
+      <mat-button-toggle value="admin">Admin</mat-button-toggle>
+      <mat-button-toggle value="manager">Manager</mat-button-toggle>
+      <mat-button-toggle value="staff">Staff</mat-button-toggle>
+    </mat-button-toggle-group>
+    <mat-error *ngIf="f.designation.touched && f.designation.invalid || submitted && f.designation.invalid" class="small">
+      <div *ngIf="f.designation.errors.required">Please select your category</div>
+    </mat-error>
+    <br>
+    <mat-form-field class="col-12 mb-2">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" placeholder="password">
+      <mat-error *ngIf="f.password.touched && f.password.invalid || submitted && f.password.invalid">
+        <div *ngIf="f.password.errors.required">Password is mandatory</div>
+        <div *ngIf="!f.password.errors.required && f.password.errors.password">Password is invalid</div>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <div class="login-button d-flex justify-content-center " appTest>
+      <button mat-raised-button *ngIf="!isLoading" color="primary" class="mr-3">Signup</button>
+    </div>
+  </form>
+</mat-card>
